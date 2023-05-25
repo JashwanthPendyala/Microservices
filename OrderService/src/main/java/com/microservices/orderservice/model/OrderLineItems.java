@@ -1,31 +1,30 @@
 package com.microservices.orderservice.model;
 
-import java.util.List;
+import java.math.BigDecimal;
 
-import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
-import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
 @Entity
-@Table(name = "Orders")
+@Table(name = "ORDER_LINE_ITEMS")
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class Order {
+public class OrderLineItems {
+	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 	
-	private String orderno;
+	private String skewCode;
 	
-	@OneToMany(cascade = CascadeType.ALL)
-	private List<OrderLineItems> orderLineItemsList;
+	private BigDecimal price;
 	
+	private Integer quantity;
 }
